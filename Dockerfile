@@ -10,6 +10,7 @@ RUN make install
 FROM alpine:latest
 WORKDIR /opt
 RUN apk --no-cache add ca-certificates
+RUN apk --update add yajl
 COPY --from=builder /opt/collectd/ .
 VOLUME /opt/collectd/etc/
 CMD /opt/sbin/collectd -f
